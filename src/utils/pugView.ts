@@ -4,7 +4,7 @@ import * as path from "path"
 
 declare module 'koa' {
     interface Context {
-        render(view: String, params?: any): void
+        render(view: string, params?: any): void
     }
 }
 
