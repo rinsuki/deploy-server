@@ -1,6 +1,46 @@
-doctype html
-html
-    head
-        meta(charset="UTF-8")
-    body
-        h1 会釈!!!!!!!!!!!!!!!!!!!!!!
+extends ./base
+
+block head
+    style.
+        li {
+            height: 3em;
+        }
+        a.btn{
+            margin: .5em 0;
+            margin-right: 0.5em;
+        }
+        tr{
+            border: solid 1px rgba(0,0,0,0.5);
+        }
+        td {
+            padding: 0.25em 0;
+        }
+        td:first-child{
+            padding-left: 0.5em;
+        }
+        td:last-child{
+            padding-right: 0.5em;
+        }
+
+block body
+    table
+        tr
+            td(rowspan=1): a.btn(href="#deploy") Deploy
+            td
+                a(href="#app") app name
+                div last deploy: 1h ago
+        tr
+            td(rowspan=1): a.btn(href="#deploy") Deploy
+            td
+                a(href="#app") app name
+                div last deploy: 1h ago
+        tr
+            td(rowspan=1): a.btn(href="#deploy") Deploy
+            td
+                a(href="#app") app name
+                div last deploy: 1h ago
+        tr
+            td(rowspan=1): a.btn(href="#deploy") Deploy
+            td
+                a(href="#app") app name
+                div last deploy: 1h ago
