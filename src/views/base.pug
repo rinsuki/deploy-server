@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Primer/9.6.0/build.css")
+        block head
+        style.
+            header {
+                background: #222;
+                padding: 12px 0;
+            }
+            header a {
+                display: inline-block;
+                color: rgb(255, 255, 255, 0.8);
+                padding: 6px 0;
+            }
+            .page-content {
+                padding-top: 20px;
+            }
+    body
+        header
+            .container
+                a(href="/") Deploy Server
+        .container.page-content
+            block body

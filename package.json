@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/rinsuki/deploy-server#readme",
   "dependencies": {
-    "express": "^4.16.2",
+    "bcrypt": "^1.0.3",
+    "koa": "^2.4.1",
+    "koa-router": "^7.3.0",
+    "koa-session": "^5.5.0",
     "mongoose": "^4.13.3",
     "pug": "^2.0.0-rc.4"
   }

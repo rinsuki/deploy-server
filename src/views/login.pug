@@ -1,10 +1,37 @@
-doctype html
-html
-    head
-        meta(charset="UTF-8")
-    body
+extends ./base
+block head
+    style.
+        form label {
+            display: block;
+            margin-bottom: 7px;
+        }
+        form .input-block{
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .auth-form {
+            max-width: 360px;
+            margin: 0 auto;
+            border: 1px solid #dedee2;
+            border-radius: 5px;
+            background: white;
+            padding: 20px;
+        }
+        body {
+            background: #f8f8f8;
+        }
+        .auth-form-header {
+            text-align: center;
+            padding: 40px 0;
+        }
+block body
+    .auth-form-header
         h1 ログイン
+    .auth-form.px-3
+        include flash
         form(method="POST")
-            input(type="text",placeholder="id")
-            input(type="password",placeholder="password")
-            input(type="submit",value="submit")
+            label login id
+            input.form-control.input-block(type="text",placeholder="id")
+            label password
+            input.form-control.input-block(type="password",placeholder="password")
+            input.btn.btn-primary.btn-block(type="submit",value="Login")
