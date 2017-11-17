@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const fs = require("fs")
+import * as mongoose from "mongoose"
+import * as fs from "fs"
 
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/deploy-server").catch(e => {
     console.error("MongoDB Error: "+e.message)
@@ -12,5 +12,5 @@ module.exports = {}
 fs.readdirSync(__dirname).forEach(file => {
     const name = file.replace(".js", "")
     if (name == "index") return
-    module.exports[name] = require("./"+name)(mongoose)
+    module.exports[name] = require("./"+name)
 })

@@ -1,10 +1,12 @@
-module.exports = async (ctx, next) => {
+import * as Koa from "koa"
+
+module.exports = async (ctx: Koa.Context, next: any) => {
     try {
         await next()
-    } catch(e) {
-        console.error(e)
-        ctx.status = e.status || 500
-        ctx.body = e.message
+    } catch(err) {
+        console.error(err)
+        ctx.status = err.status || 500
+        ctx.body = err.message
         ctx.app.emit("error", err, ctx)
     }
 }

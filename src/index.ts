@@ -1,6 +1,7 @@
-const Koa = require("koa")
+import * as Koa from 'koa'
+import * as Router from 'koa-router'
+
 const app = new Koa()
-const Router = require("koa-router")
 
 const models = require("./models")
 
@@ -12,13 +13,13 @@ app.use(require("koa-session")(app))
 app.use(require("./utils/pugView"))
 app.use(require("./utils/flash"))
 
-const router = new Router
+var router = new Router
 
 router.get("/", ctx => ctx.render("index"))
 
 router.get("/login", ctx => ctx.render("login"))
 
-router.post("/login", (ctx) => {
+router.post("/login", ctx => {
     ctx.body = "wip"
 })
 

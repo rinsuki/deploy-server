@@ -1,6 +1,6 @@
-module.exports = r => {
+module.exports = (regex: RegExp) => {
     return {
-        validator: v => r.test(v),
-        message: 'This parameter regex is '+r.toString()
+        validator: (v: string) => regex.test(v),
+        message: 'This parameter regex is '+regex.toString()
     }
 }
