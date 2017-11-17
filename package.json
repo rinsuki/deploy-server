@@ -19,6 +19,7 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.3.0",
     "koa-session": "^5.5.0",
     "mongoose": "^4.13.3",

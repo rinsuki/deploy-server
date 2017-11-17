@@ -4,8 +4,10 @@ const Router = require("koa-router")
 
 const models = require("./models")
 
-app.keys = ["ふーん、アンタが私のプロデューサー?私は渋谷凛。今日からよろしくね  "]
+app.keys = ["ふーん、アンタが私のプロデューサー?私は渋谷凛。今日からよろしくね"]
 
+app.use(require("./utils/traceback"))
+app.use(require("koa-bodyparser")())
 app.use(require("koa-session")(app))
 app.use(require("./utils/pugView"))
 app.use(require("./utils/flash"))
@@ -20,9 +22,7 @@ router.post("/login", (ctx) => {
     ctx.body = "wip"
 })
 
-router.get("/register", require("./utils/notRegisterOnlyFilter"), async ctx => ctx.render("register"))
-
-router.post("/register", require("./utils/notRegisterOnlyFilter"))
+router.use("/register", require("./controllers/register").routes())
 
 app.use(router.routes())
 
