@@ -31,7 +31,7 @@ block body
         include flash
         form(method="POST")
             label login id
-            input.form-control.input-block(type="text",placeholder="id")
+            input.form-control.input-block(type="text", name="username", placeholder="id")
             label password
-            input.form-control.input-block(type="password",placeholder="password")
-            input.btn.btn-primary.btn-block(type="submit",value="Login")
+            input.form-control.input-block(type="password", name="password", placeholder="password")
+            input.btn.btn-primary.btn-block(type="submit", value="Login")

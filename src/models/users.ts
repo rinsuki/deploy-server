@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
     timestamps: true
 })
 
-interface IUser extends mongoose.Document{
+export interface IUser extends mongoose.Document{
     username: string
     password: string
     isAdmin: boolean

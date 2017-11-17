@@ -7,8 +7,8 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/deploy-server")
     process.exit(1)
 })
 
-import Users from "./users"
+import User, {IUser} from "./users"
 
 export {
-    Users
+    User, IUser
 }

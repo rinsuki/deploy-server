@@ -8,8 +8,10 @@ import * as models from './models'
 import middlewareTraceback from './utils/traceback'
 import middlewarePugView from './utils/pugView'
 import middlewareFlash from './utils/flash'
+import middlewareUserAuth from './utils/userAuth'
 
-import register from './controllers/register'
+import controllerRegister from './controllers/register'
+import controllerLogin from './controllers/login'
 
 const app = new Koa()
 
@@ -20,18 +22,22 @@ app.use(BodyParser())
 app.use(Session(app))
 app.use(middlewarePugView)
 app.use(middlewareFlash)
+app.use(middlewareUserAuth)
 
 var router = new Router
 
-router.get("/", ctx => ctx.render("index"))
+router.use("/register", controllerRegister.routes())
+router.use("/login", controllerLogin.routes())
 
-router.get("/login", ctx => ctx.render("login"))
-
-router.post("/login", ctx => {
-    ctx.body = "wip"
+router.use(async (ctx, next) => {
+    if (!ctx.user) {
+        ctx.redirect("/login?next="+encodeURIComponent(ctx.path))
+        return
+    }
+    await next()
 })
 
-router.use("/register", register.routes())
+router.get("/", async ctx => ctx.render("index"))
 
 app.use(router.routes())
 
