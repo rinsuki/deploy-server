@@ -1,13 +1,14 @@
 import * as Router from "koa-router"
-const bcrypt = require("bcrypt")
-const models = require("../models")
+import * as bcrypt from "bcrypt"
+import notRegisterOnlyFilter from '../utils/notRegisterOnlyFilter'
+import {Users} from "../models"
 
 var router = new Router
 
-router.get("/", require("../utils/notRegisterOnlyFilter"), async ctx => ctx.render("register"))
+router.get("/", notRegisterOnlyFilter, async ctx => ctx.render("register"))
 
-router.post("/", require("../utils/notRegisterOnlyFilter"), async ctx => {
-    var user = new models.users
+router.post("/", notRegisterOnlyFilter, async ctx => {
+    var user = new Users
     user.username = ctx.request.body.username
     user.password = await bcrypt.hash(ctx.request.body.password, await bcrypt.genSalt(12))
     user.isAdmin = true
@@ -15,4 +16,4 @@ router.post("/", require("../utils/notRegisterOnlyFilter"), async ctx => {
     console.log(ctx.body)
 })
 
-module.exports = router
+export default router

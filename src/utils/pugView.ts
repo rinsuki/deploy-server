@@ -1,6 +1,6 @@
 import * as Koa from "koa"
-const pug = require("pug")
-const path = require("path")
+import * as pug from "pug"
+import * as path from "path"
 
 declare module 'koa' {
     interface Context {
@@ -8,7 +8,7 @@ declare module 'koa' {
     }
 }
 
-module.exports = async (ctx: Koa.Context, next: any) => {
+export default async (ctx: Koa.Context, next: any) => {
     ctx.render = (view, params = {}) => {
         params.state = ctx.state
         ctx.body = pug.renderFile(path.join(__dirname, "..", "..", "views", view)+".pug", params)

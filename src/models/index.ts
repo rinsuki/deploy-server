@@ -7,10 +7,8 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/deploy-server")
     process.exit(1)
 })
 
-module.exports = {}
+import Users from "./users"
 
-fs.readdirSync(__dirname).forEach(file => {
-    const name = file.replace(".js", "")
-    if (name == "index") return
-    module.exports[name] = require("./"+name)
-})
+export {
+    Users
+}

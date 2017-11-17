@@ -1,6 +1,6 @@
 import * as Koa from "koa"
 
-module.exports = async (ctx: Koa.Context, next: any) => {
+export default async (ctx: Koa.Context, next: any) => {
     try {
         await next()
     } catch(err) {

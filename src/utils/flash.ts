@@ -6,7 +6,7 @@ declare module 'koa' {
     }
 }
 
-module.exports = async (ctx: Koa.Context, next: any) => {
+export default async (ctx: Koa.Context, next: any) => {
     ctx.state.flash = () => {
         return (ctx.session!.flash || []).shift()
     }

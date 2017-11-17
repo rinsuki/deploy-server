@@ -1,17 +1,25 @@
 import * as Koa from 'koa'
 import * as Router from 'koa-router'
+import * as Session from 'koa-session'
+import * as BodyParser from 'koa-bodyparser'
+
+import * as models from './models'
+
+import middlewareTraceback from './utils/traceback'
+import middlewarePugView from './utils/pugView'
+import middlewareFlash from './utils/flash'
+
+import register from './controllers/register'
 
 const app = new Koa()
 
-const models = require("./models")
-
 app.keys = ["ふーん、アンタが私のプロデューサー?私は渋谷凛。今日からよろしくね"]
 
-app.use(require("./utils/traceback"))
-app.use(require("koa-bodyparser")())
-app.use(require("koa-session")(app))
-app.use(require("./utils/pugView"))
-app.use(require("./utils/flash"))
+app.use(middlewareTraceback)
+app.use(BodyParser())
+app.use(Session(app))
+app.use(middlewarePugView)
+app.use(middlewareFlash)
 
 var router = new Router
 
@@ -23,7 +31,7 @@ router.post("/login", ctx => {
     ctx.body = "wip"
 })
 
-router.use("/register", require("./controllers/register").routes())
+router.use("/register", register.routes())
 
 app.use(router.routes())
 
